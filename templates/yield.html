@@ -1,0 +1,72 @@
+{% extends 'layout.html' %} {% block body %}
+
+<style>
+
+    html body {
+      background-color: rgb(206, 206, 228);
+      background-image: url("{{ url_for('static', filename='images/crop_background.jpg') }}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+
+
+  }
+
+    .bg-dark-light {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .form-control-dark {
+            background-color: #333;
+            border: 1px solid #666;
+            color: white;
+        }
+
+</style>
+<!--Form Section-->
+<div class="container py-5">
+    <h1 class="text-center" style="color: black;">Crop Yield Prediction Per Country</h1>
+    <div class="card bg-dark-light text-white border-0">
+        <div class="card-body">
+            <h2 class="text-center" style="color: white;">Input All Features Here</h2>
+            <form method="POST" action="{{ url_for('predict') }}">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="Year" class="form-label">Year</label>
+                        <input type="number" class="form-control form-control-dark" id="Year" name="Year" value="2013">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="average_rain_fall_mm_per_year" class="form-label">Average Rainfall (mm/year)</label>
+                        <input type="number" class="form-control form-control-dark"
+                               id="average_rain_fall_mm_per_year" name="average_rain_fall_mm_per_year">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="pesticides_tonnes" class="form-label">Pesticides (tonnes)</label>
+                        <input type="number" class="form-control form-control-dark" id="pesticides_tonnes"
+                               name="pesticides_tonnes">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="avg_temp" class="form-label">Average Temperature (°C)</label>
+                        <input type="number" class="form-control form-control-dark" id="avg_temp" name="avg_temp">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="Area" class="form-label">Area</label>
+                        <input type="text" class="form-control form-control-dark" id="Area" name="Area">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="Item" class="form-label">Item</label>
+                        <input type="text" class="form-control form-control-dark" id="Item" name="Item">
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-danger btn-lg mt-3 w-100">Predict</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Form section -->
+
+{% endblock %}
